@@ -1,56 +1,61 @@
-console.log("connected")
+console.log("connected");
+
+function showCake(){
+    $(".cakeimg").parent().addClass("show");
+    $(".ccimg").parent().removeClass("show");
+    $(".donimg").parent().removeClass("show");
+}
+
+function showCupCake(){
+    $(".ccimg").parent().addClass("show");
+    $(".cakeimg").parent().removeClass("show");
+    $(".donimg").parent().removeClass("show");
+}
+
+function showDonut(){
+    $(".donimg").parent().addClass("show");
+    $(".ccimg").parent().removeClass("show");
+    $(".cakeimg").parent().removeClass("show");
+}
+
 $("#all").on("click",function() {
-    $(".cakeimg").show()
-    $(".ccimg").show()
-    $(".donimg").show()
-    console.log("clicked cake");
+    $(".cakeimg").parent().addClass("show");
+    $(".ccimg").parent().addClass("show");
+    $(".donimg").parent().addClass("show");
 });
 
-$("#pn").on("click",function() {
-    $(".cakeimg").show()
-    $(".ccimg").hide()
-    $(".donimg").hide()
-    console.log("clicked cake");
+$("#cake").on("click",function() {
+    showCake();
 });
-$("#cc").on("click",function() {
-    $(".ccimg").show()
-    $(".cakeimg").hide()
-    $(".donimg").hide()
-    console.log("clicked cake");
+
+$("#cupcake").on("click",function() {
+    showCupCake();
 });
-$("#don").on("click",function() {
-    $(".donimg").show()
-    $(".ccimg").hide();
-    $(".cakeimg").hide();
-    console.log("clicked cake");
+
+$("#donut").on("click",function() {
+    showDonut();
 });
+
 $("#search").on("click",function(){
-   var searching = $("#inputbox").val();
-   $("#inputbox").val("");
-   console.log(searching)
-   if(searching === "cake"){
-    $(".cakeimg").show()
-    $(".ccimg").hide()
-    $(".donimg").hide()
-   }
-   else if(searching === "cupcakes" || searching === "muffins"){
-    $(".ccimg").show()
-    $(".cakeimg").hide()
-    $(".donimg").hide()
+    var sweet = $("#inputbox").val();
+    sweet = sweet.toLowerCase();
+    $("#inputbox").val("");
+    if(sweet === 'cake') {
+        showCake();
     }
-   else if(searching === "donuts" || searching === "donut"){
-        $(".donimg").show();
-        $(".ccimg").hide();
-        $(".cakeimg").hide();       
-
+    else if(sweet==='cupcake'||sweet==='cupcakes'||sweet==='muffin'||sweet==='muffins') {
+        showCupCake();
     }
-    
+    else if(sweet==='donuts'||sweet==='donut') {
+        showDonut();
+    }
 });
-$(".cart").on('click',function(){
-   $(this).html("Added to cart");
-   $(this).css("background","green")
 
-})
+$(".cart").on('click',function(){
+    $(this).html("Added to cart");
+    $(this).css("background","green");
+});
+
 $(function(){
     $(document).scroll(function(){
         var $nav = $("#mainnav");
